@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom'
 import posts from "./../../post_data.json";
 import "./TopicList.css";
 
@@ -19,12 +20,13 @@ class TopicList extends Component {
   render() {
     const { posts } = this.state;
     let displayTopics = posts.map(post => {
-      return <li key={post.id}>{post.title}</li>;
+      return <Link to={`/topics/${post.id}`}><li key={post.id}>{post.title}</li></Link>;
     });
     return (
       <div className="TopicList">
         <h1>Latest Blog Posts...</h1>
         <ul>{displayTopics}</ul>
+        <ul>To go back to the homepage <Link to="/">CLICK HERE</Link></ul>
       </div>
     );
   }
